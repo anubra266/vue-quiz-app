@@ -3,8 +3,12 @@
     <Header />
     <b-container class="bv-example-row">
       <b-row>
-        <b-col sm="6" offset="3"> 
-          <QuestionBox />
+        <b-col sm="6" offset="3">
+          <QuestionBox
+            v-if="questions.length"
+            :currentQuestion="questions[index]"
+            :next="next"
+          />
         </b-col>
       </b-row>
     </b-container>
@@ -12,6 +16,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import Header from "./components/Header";
 import QuestionBox from "./components/QuestionBox";
 
@@ -20,6 +25,22 @@ export default {
   components: {
     Header,
     QuestionBox,
+  },
+  data() {
+    return {
+      questions: [],
+      index: 0,
+    };
+  },
+  methods: {
+    next() {
+      this.index++;
+    },
+  },
+  mounted() {
+    axios
+      .get("https://opentdb.com/api.php?amount=10&category=27&type=multiple")
+      .then((res) => (this.questions = res.data.results));
   },
 };
 </script>
