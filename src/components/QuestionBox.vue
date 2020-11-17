@@ -17,8 +17,8 @@
           {{ answer }}
         </b-list-group-item>
       </b-list-group>
-      <b-button variant="primary" href="#">Submit</b-button>
-      <b-button variant="success" href="#" @click="next">Next</b-button>
+      <b-button variant="primary" @click="submitAnswer">Submit</b-button>
+      <b-button variant="success" @click="next">Next</b-button>
     </b-jumbotron>
   </div>
 </template>
@@ -28,11 +28,12 @@ import _ from "lodash";
 
 export default {
   name: "QuestionBox",
-  props: { currentQuestion: Object, next: Function },
+  props: { currentQuestion: Object, next: Function, increment: Function },
   data() {
     return {
       selectedIndex: null,
       shuffledAnswers: null,
+      correctIndex : null
     };
   },
   computed: {
@@ -52,11 +53,15 @@ export default {
     },
   },
   methods: {
-    selectAnswer(i) {
-      this.selectedIndex = i;
+      selectAnswer(i) {
+          this.selectedIndex = i;
+    },
+    submitAnswer() {
+
     },
     shuffleAnswers() {
-      this.shuffledAnswers = _.shuffle(this.answers);
+        this.shuffledAnswers = _.shuffle(this.answers);
+        this.correctIndex = this.shuffledAnswers.indexOf(this.currentQuestion.correct_answer)
     },
   },
 };
