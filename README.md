@@ -1,6 +1,8 @@
 # vue-quiz-app ✍️
 Yeah! you guessed right. It's a simple Quiz app in vue 😁 
 
+**Note: Coding in progress**
+
 ## Project setup
 ```
 yarn install
