@@ -1,4 +1,5 @@
-# vue-quiz-app
+# vue-quiz-app ✍️
+Yeah! you guessed right. It's a simple Quiz app in vue 😁 
 
 ## Project setup
 ```
@@ -14,11 +15,3 @@ yarn serve
 ```
 yarn build
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
