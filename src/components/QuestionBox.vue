@@ -24,12 +24,15 @@
 </template>
 
 <script>
+import _ from "lodash";
+
 export default {
   name: "QuestionBox",
   props: { currentQuestion: Object, next: Function },
   data() {
     return {
       selectedIndex: null,
+      shuffledAnswers: null,
     };
   },
   computed: {
@@ -39,9 +42,21 @@ export default {
       return answers;
     },
   },
+  watch: {
+    currentQuestion: {
+      immediate: true,
+      handler() {
+        this.selectedIndex = null;
+        this.shuffleAnswers();
+      },
+    },
+  },
   methods: {
     selectAnswer(i) {
       this.selectedIndex = i;
+    },
+    shuffleAnswers() {
+      this.shuffledAnswers = _.shuffle(this.answers);
     },
   },
 };
