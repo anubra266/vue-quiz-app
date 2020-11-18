@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <Header :numCorrect="numCorrect" :numTotal="numTotal" />
-    <b-container class="bv-example-row">
+    <b-container class="bv-example-row mt-3">
       <b-row>
-        <b-col sm="6" offset="3">
+        <b-col sm="12">
           <QuestionBox
             v-if="questions.length"
             :currentQuestion="questions[index]"
