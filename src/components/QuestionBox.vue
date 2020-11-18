@@ -12,7 +12,7 @@
           v-for="(answer, i) in shuffledAnswers"
           :key="i"
           @click="selectAnswer(i)"
-          :class="[!answered && selectedIndex === i ? 'selected' : '']"
+          :class="answerClass(i)"
         >
           {{ answer }}
         </b-list-group-item>
@@ -74,6 +74,15 @@ export default {
         this.currentQuestion.correct_answer
       );
     },
+    answerClass(i) {
+      return !this.answered && this.selectedIndex === i
+        ? "selected"
+        : this.answered && this.correctIndex === i
+        ? "correct"
+        : this.answered && this.selectedIndex === i && this.correctIndex !== i
+        ? "incorrect"
+        : "";
+    },
   },
 };
 </script>
@@ -98,5 +107,7 @@ export default {
 }
 .incorrect {
   background: red;
+  color: #eee;
+  font-weight: 700;
 }
 </style>
