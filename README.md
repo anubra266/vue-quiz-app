@@ -20,3 +20,5 @@ yarn serve
 ```
 yarn build
 ```
+### Take a peek
+![](./quiz.png)
